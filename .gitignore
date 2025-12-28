@@ -1,0 +1,21 @@
+# Node modules (both client & backend)
+node_modules/
+client/node_modules/
+backend/node_modules/
+
+# Environment files
+.env
+client/.env
+backend/.env
+
+# Build output
+client/dist/
+backend/dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
