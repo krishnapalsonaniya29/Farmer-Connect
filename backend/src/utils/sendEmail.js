@@ -1,15 +1,22 @@
 import nodemailer from "nodemailer";
 
 export const sendOTPEmail = async (email, otp) => {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    throw new Error("Email credentials not configured");
+  }
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      pass: process.env.EMAIL_PASS, // MUST be App Password
     },
   });
 
-  await transporter.sendMail({
+  // ✅ Verify transporter (very important)
+  await transporter.verify();
+
+  const mailOptions = {
     from: `"Farmer Connect" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Your Farmer Connect OTP",
@@ -21,5 +28,7 @@ export const sendOTPEmail = async (email, otp) => {
         <p>This OTP is valid for 5 minutes.</p>
       </div>
     `,
-  });
+  };
+
+  await transporter.sendMail(mailOptions);
 };
