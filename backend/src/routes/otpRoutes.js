@@ -92,7 +92,7 @@ router.post("/send-otp", otpLimiter, async (req, res) => {
 
     await Promise.race([emailPromise, timeoutPromise]);
 
-    // ✅ Save OTP ONLY if email was sent
+    // ✅ Save OTP ONLY if email was sent, temp
     saveOTP(email, otp);
 
     return res.status(200).json({ message: "OTP sent successfully" });
