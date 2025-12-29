@@ -162,3 +162,4 @@ router.post("/send-otp", otpLimiter, async (req, res) => {
     return res.status(500).json({ message: "Failed to generate OTP" });
   }
 });
+export default router;
