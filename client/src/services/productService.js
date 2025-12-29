@@ -2,20 +2,20 @@ import { apiFetch } from "./api";
 
 /* =========================
    Products
-   ========================= */
+========================= */
 
-// Add product
+// ➕ Add product
 export const addProductAPI = (formData) =>
-  apiFetch("/products", {
+  apiFetch("/api/products", {
     method: "POST",
     body: formData,
   });
 
-// Get my products
-export const getMyProductsAPI = () => apiFetch("/products/my");
+// 📦 Get my products
+export const getMyProductsAPI = () => apiFetch("/api/products/my");
 
-// Delete product
+// 🗑 Delete product
 export const deleteProductAPI = (id) =>
-  apiFetch(`/products/${id}`, {
+  apiFetch(`/api/products/${id}`, {
     method: "DELETE",
   });
