@@ -5,26 +5,26 @@ import { apiFetch } from "./api";
    ========================= */
 
 // Public marketplace
-export const getAllEquipmentAPI = () => apiFetch("/equipment");
+export const getAllEquipmentAPI = () => apiFetch("/api/equipment");
 
 // My equipment
-export const getMyEquipmentAPI = () => apiFetch("/equipment/my");
+export const getMyEquipmentAPI = () => apiFetch("/api/equipment/my");
 
 // Add equipment
 export const addEquipmentAPI = (formData) =>
-  apiFetch("/equipment", {
+  apiFetch("/api/equipment", {
     method: "POST",
     body: formData,
   });
 
 // Delete equipment
 export const deleteEquipmentAPI = (id) =>
-  apiFetch(`/equipment/${id}`, {
+  apiFetch(`/api/equipment/${id}`, {
     method: "DELETE",
   });
 
 // Toggle availability
 export const toggleEquipmentAPI = (id) =>
-  apiFetch(`/equipment/${id}/toggle`, {
+  apiFetch(`/api/equipment/${id}/toggle`, {
     method: "PATCH",
   });
